@@ -70,6 +70,33 @@ The `Processor` column will show which memory the model was loaded in to:
 
 Ollama server can be configured with environment variables.
 
+### What environment variables are available?
+
+#### Environment variables available in Linux
+
+| Name of environment variable     | Description                                             | Possible values | Example                       | Default value
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+| OLLAMA_DEBUG                     | Show additional debug information                       | 1, 0                               | OLLAMA_DEBUG=1                     | 0
+| OLLAMA_FLASH_ATTENTION           | Enabled flash attention                                 | 1, 0                               |                                    | 0
+| OLLAMA_KV_CACHE_TYPE             | Quantization type for the K/V cache                     |                                    | OLLAMA_KV_CACHE_TYPE='f16'         | 'f16'
+| OLLAMA_GPU_OVERHEAD              | Reserve a portion of VRAM per GPU (bytes)               |                                    |                                    | 
+| OLLAMA_HOST                      | IP Address for the ollama server                        |                                    | OLLAMA_HOST='127.0.0.1:11434'      | '127.0.0.1:11434'
+| OLLAMA_KEEP_ALIVE                | The duration that models stay loaded in memory          | '5m', '6m', '7m', ..., -1          | OLLAMA_KEEP_ALIVE='5m'             | '5m'
+| OLLAMA_LLM_LIBRARY               | Set LLM library to bypass autodetection                 |                                    |                                    |
+| OLLAMA_LOAD_TIMEOUT              | How long to allow model loads to stall before giving up | '5m', '6m', '7m', ..., -1          | OLLAMA_LOAD_TIMEOUT='5m'           | '5m'
+| OLLAMA_MAX_LOADED_MODELS         | Maximum number of loaded models per GPU                 | 1, 2, 3, 4, ...                    | OLLAMA_MAX_LOADED_MODELS=1         |
+| OLLAMA_MAX_QUEUE                 | Maximum number of queued requests                       | 1, 2, 3, 4, ...                    | OLLAMA_MAX_QUEUE=10                | 512
+| OLLAMA_MODELS                    | The path to the models directory                        | Any directory with read permission | OLLAMA_MODELS='/home/bill/.models' | $HOME/.ollama/models
+| OLLAMA_NOHISTORY                 | Do not preserve readline history                        |                                    |                                    |
+| OLLAMA_NOPRUNE                   | Do not prune model blobs on startup                     |                                    |                                    |
+| OLLAMA_NUM_PARALLEL              | Maximum number of parallel requests                     |                                    |                                    |
+| OLLAMA_ORIGINS                   | A comma separated list of allowed origins               |                                    |                                    |
+| OLLAMA_SCHED_SPREAD              | Always schedule model across all GPUs                   |                                    |                                    |
+| OLLAMA_MULTIUSER_CACHE           | Optimize prompt caching for multi-user scenarios        |                                    |                                    |
+| OLLAMA_CONTEXT_LENGTH            | Context length to use unless otherwise specified        |                                    | OLLAMA_CONTEXT_LENGTH=2048         | 2048
+| OLLAMA_NEW_ENGINE                | Enable the new Ollama engine                            |                                    |                                    | 
+| OLLAMA_INTEL_GPU                 | Enable experimental resource to use Inte GPU            | 0, 1                               | OLLAMA_INTEL_GPU=1                 | 0
+
 ### Setting environment variables on Mac
 
 If Ollama is run as a macOS application, environment variables should be set using `launchctl`:
